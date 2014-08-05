@@ -1,0 +1,28 @@
+{
+  "name": "Wget2Clipboard",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Right click on link to automatically generate a wget command to download the link including cookies and referrer!",
+  "homepage_url": "https://github.com/cmprescott/wget2clipboard",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "page": "src/bg/background.html"
+  },
+  "options_page": "src/options_custom/index.html",
+  "permissions": [
+    "activeTab",
+    "background",
+    "cookies",
+    "contextMenus",
+    "clipboardWrite",
+    "contextMenus",
+    "http://*/*",
+    "https://*/*",
+    "tabs"
+  ]
+}
