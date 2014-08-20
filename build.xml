@@ -1,26 +1,19 @@
 <?xml version="1.0"?>
 <project basedir="." default="compile">
   
-  <!-- Extensions -->
-  <extension id="jscomp"
-    extensionName="closure-compiler"
-    specificationVersion="1.0"
-    specificationVendor="Peter Donald"
-    implementationVendorID="vv"
-    implementationVendor="Apache"
-    implementationVersion="2.0"
-    implementationURL="http://search.maven.org/remotecontent?filepath=com/google/javascript/closure-compiler/v20140730/closure-compiler-v20140730.jar">
-  </extension>
+  <!-- Setup -->
+  <target name="setup">
+	<mkdir dir="lib"/>
+    <get src="http://dl.google.com/closure-compiler/compiler-latest.zip" dest="lib/compiler-latest.zip" skipexisting="true"/>
+	<unzip src="lib/compiler-latest.zip" dest="lib/closure-compiler"/>
+  </target>
+  
+  <!-- Compile -->
+  <target name="compile" depends="setup">
+	<!-- Task defintions -->
+	<taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="lib/closure-compiler/compiler.jar"/>
 
-  <jarlib-resolve property="jscomp">
-    <extension refid="closure-compiler"/>
-    <url url="http://search.maven.org/remotecontent?filepath=com/google/javascript/closure-compiler/v20140730/closure-compiler-v20140730.jar" destfile="lib/compiler.jar"/>
-  </jarlib-resolve>  
-  
-  <!-- Tasks --> 
-  <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="lib/compiler.jar"/>
-  
-  <target name="compile">
+	<!-- actual tasks -->
     <jscomp compilationLevel="advanced" warning="verbose"  debug="false" output="src/bg/bg-compiled.js">
       <externs dir="${basedir}/src/extern">
         <!-- Closure compiler includes "chrome.js" -->
