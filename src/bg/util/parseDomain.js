@@ -5,7 +5,7 @@
  * @return {string} domain of url (no protocol)
  */
 Wget2Clipboard.util.parseDomain = (function(url) {
-    var server, parts, isIp, domain;
+    var server, parts, isIp, domain, i;
 
     // remove http://, https://, ftp://, etc
     server = url.match(/:\/\/(.[^/:#?]+)/)[1];

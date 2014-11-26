@@ -4,10 +4,10 @@
  */
 Wget2Clipboard.handler.onClick.copyCommandsToClipboard = (function(info, tab) {
   /**
-   * @param {String} tabUrl the current tab's URL
-   * @param {String} targetUrl URL user right clicked on
-   * @param {Array|NetscapeCookie} cookies the cookie's associated with the current tab
-   * @returns {String} commands to save netscape netscapeCookies (if necessary), use Wget to download, and delete netscapeCookies file
+   * @param {string} tabUrl the current tab's URL
+   * @param {string} targetUrl URL user right clicked on
+   * @param {Array|Wget2Clipboard.model.NetscapeCookie} cookies the cookie's associated with the current tab
+   * @returns {string} commands to save netscape netscapeCookies (if necessary), use Wget to download, and delete netscapeCookies file
    */
   var generateCommands = (function(tabUrl, targetUrl, cookies) {
     var echoCookieCommands, echoCookieToFileCommands, deleteCookieFileCommand, wgetCommand;

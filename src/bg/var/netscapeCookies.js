@@ -1,11 +1,9 @@
 /**
- * @param {Array|Cookie} cookies set the persistent tab cookies
- * @type {Function}
+ *
+ * @param {Array} cookies set the persistent tab cookies
  */
 Wget2Clipboard.var.setNetscapeCookies = (function(cookies) {
-  Wget2Clipboard.var.netscapeCookies = cookies.map(
-    Wget2Clipboard.model.NetscapeCookies
-  );
+  Wget2Clipboard.var.netscapeCookies = cookies.map(Wget2Clipboard.model.NetscapeCookies);
 });
 
 /**

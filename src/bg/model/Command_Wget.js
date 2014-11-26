@@ -2,26 +2,26 @@
  * Creates a Wget command for a target automagically filling the...
  * continue, referrer, user-agent, cookies, no-check-cert parameters
  *
- * @param {String} tabUrl current URL of tab
- * @param {String} targetUrl URL to download
- * @param {Array|String} cookies array of netscape cookies associated with domain
- * @return {Command} Wget command & parameters
+ * @param {string} tabUrl current URL of tab
+ * @param {string} targetUrl URL to download
+ * @param {Array|Wget2Clipboard.model.NetscapeCookie} cookies array of netscape cookies associated with domain
+ * @return {Wget2Clipboard.model.Command.Wget} Wget command & parameters
  * @constructor
  */
 Wget2Clipboard.model.Command.Wget = (function (tabUrl, targetUrl, cookies) {
 
     /**
-     * @return {string} path to Win wget default install
+     * @returns {string} path to Win wget default install
      */
     var exec = (function() {
         return "call \"C:\\Program Files (x86)\\GnuWin32\\" + "bin\\wget.exe\"";
     });
     /**
      *
-     * @param tabUrl url of current tab
-     * @param targetUrl url to download
-     * @param cookies cookies associated with domain
-     * @returns {Array|String} Wget parameters
+     * @param {string|null} tabUrl url of current tab
+     * @param {string|null} targetUrl url to download
+     * @param {Array|Wget2Clipboard.model.NetscapeCookie} cookies cookies associated with domain
+     * @returns {Array} Wget parameters
      */
     var parameters = (function(tabUrl, targetUrl, cookies) {
         return ["--continue \"" + targetUrl + "\""]
@@ -42,5 +42,5 @@ Wget2Clipboard.model.Command.Wget = (function (tabUrl, targetUrl, cookies) {
     );
 });
 
-Wget2Clipboard.model.Command.Wget.prototype = new Wget2Clipboard.model.Command();
+Wget2Clipboard.model.Command.Wget.prototype = new Wget2Clipboard.model.Command(null, null);
 Wget2Clipboard.model.Command.Wget.prototype.constructor = Wget2Clipboard.model.Command.Wget;

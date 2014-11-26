@@ -6098,5 +6098,5 @@ Wget2Clipboard.var.domainList = {
   "rhcloud.com":1,
   "priv.at":1,
   "za.net":1,
-  "za.org":1,
+  "za.org":1
 };

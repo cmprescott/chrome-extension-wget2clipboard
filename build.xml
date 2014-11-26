@@ -3,12 +3,12 @@
   
   <!-- Setup -->
   <target name="setup">
-	<mkdir dir="lib"/>
-	<!-- Download/install Google closure-compiler -->
+    <mkdir dir="lib"/>
+    <!-- Download/install Google closure-compiler -->
     <get src="http://dl.google.com/closure-compiler/compiler-latest.zip" dest="lib/compiler-latest.zip" skipexisting="true"/>
-	<unzip src="lib/compiler-latest.zip" dest="lib/closure-compiler" overwrite="false"/>
-	<!-- Define jscomp Ant task -->
-	<taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="lib/closure-compiler/compiler.jar"/>
+    <unzip src="lib/compiler-latest.zip" dest="lib/closure-compiler" overwrite="false"/>
+    <!-- Define jscomp Ant task -->
+    <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="lib/closure-compiler/compiler.jar"/>
   </target>
   
   <!-- Clean -->
@@ -26,27 +26,31 @@
   
   <!-- Compile -->
   <target name="compile" depends="setup">
-    <jscomp compilationLevel="advanced" warning="verbose"  debug="false" output="target/js/bg-compiled.js">
+    <jscomp compilationLevel="advanced" languageIn="ECMASCRIPT5" warning="verbose"  debug="false" output="target/js/bg-compiled.js">
       <externs dir="${basedir}/src/extern">
         <!-- Closure compiler includes "chrome.js" -->
-		<file name="chrome_extensions.js"/>
+		    <file name="chrome_extensions.js"/>
       </externs>
       <sources dir="${basedir}/src/bg">
         <file name="Wget2Clipboard.js"/>
-        <file name="copy.js"/>
-		<file name="model/Command.js"/>
-		<file name="model/Command/Command_Echo.js"/>
-		<file name="model/Command/Command_Delete.js"/>
-		<file name="model/Command/Command_Wget.js"/>
-		<file name="model/File.js"/>
-		<file name="model/NetscapeCookie.js"/>
-		<file name="var/cookiesFile.js"/>
-		<file name="var/domainList.js"/>
-		<file name="var/netscapeCookies.js"/>
-		<file name="var/settings.js"/>
-		<file name="handler/onClick.js"/>
-		<file name="handler/tabLoad.js"/>
-		<file name="handler/tabUpdated.js"/>
+        <file name="util/copy.js"/>
+        <file name="util/escapeForConsole.js"/>
+        <file name="util/escapeJs.js"/>
+        <file name="util/parseDomain.js"/>
+        <file name="util/redirectCommandsToFile.js"/>
+        <file name="model/Command.js"/>
+        <file name="model/Command_Echo.js"/>
+        <file name="model/Command_Delete.js"/>
+        <file name="model/Command_Wget.js"/>
+        <file name="model/File.js"/>
+        <file name="model/NetscapeCookie.js"/>
+        <file name="var/cookiesFile.js"/>
+        <file name="var/domainList.js"/>
+        <file name="var/netscapeCookies.js"/>
+        <file name="var/settings.js"/>
+        <file name="handler/onClick.js"/>
+        <file name="handler/tabLoad.js"/>
+        <file name="handler/tabUpdated.js"/>
       </sources>
     </jscomp>
   </target>

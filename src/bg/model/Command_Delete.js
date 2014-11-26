@@ -17,9 +17,10 @@ Wget2Clipboard.model.Command.Delete = (function(File) {
    */
   Wget2Clipboard.model.Command.call(
       this,
-      exec(File)
+      exec(File),
+      null
   );
 });
 
-Wget2Clipboard.model.Command.Delete.prototype = new Wget2Clipboard.model.Command();
+Wget2Clipboard.model.Command.Delete.prototype = new Wget2Clipboard.model.Command(null, null);
 Wget2Clipboard.model.Command.Delete.prototype.constructor = Wget2Clipboard.model.Command.Delete;

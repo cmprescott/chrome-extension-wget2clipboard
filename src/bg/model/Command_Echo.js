@@ -2,12 +2,12 @@
  * Creates the echo command (outputs to console)
  *
  * @param obj object to write out
- * @returns {Command} Echo Command object
+ * @returns {Wget2Clipboard.model.Command.Echo} Echo Command object
  * @constructor
  */
 Wget2Clipboard.model.Command.Echo = (function(obj) {
   /**
-   * @return {String} the echo command
+   * @return {string} the echo command
    */
   var exec = (function(obj) {
     return "echo " + obj.toString();
@@ -18,7 +18,8 @@ Wget2Clipboard.model.Command.Echo = (function(obj) {
    */
   Wget2Clipboard.model.Command.call(
       this,
-      exec(obj)
+      exec(obj),
+      null
   );
 });
 
@@ -32,5 +33,5 @@ Wget2Clipboard.model.Command.Echos = (function(obj) {
   return new Wget2Clipboard.model.Command.Echo(obj);
 });
 
-Wget2Clipboard.model.Command.Echo.prototype = new Wget2Clipboard.model.Command();
+Wget2Clipboard.model.Command.Echo.prototype = new Wget2Clipboard.model.Command(null, null);
 Wget2Clipboard.model.Command.Echo.prototype.constructor = Wget2Clipboard.model.Command.Echo;
