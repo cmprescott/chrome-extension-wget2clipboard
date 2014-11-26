@@ -4,9 +4,7 @@
  */
 Wget2Clipboard.var.setNetscapeCookies = (function(cookies) {
   Wget2Clipboard.var.netscapeCookies = cookies.map(
-    function(cookie) {
-      return new Wget2Clipboard.model.NetscapeCookie(cookie);
-    }
+    Wget2Clipboard.model.NetscapeCookies
   );
 });
 

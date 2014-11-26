@@ -28,3 +28,13 @@ Wget2Clipboard.model.NetscapeCookie.prototype.toString = (function() {
     this.name,
     this.value].join("    ");
 });
+
+/**
+ * Used to map an array to Netscape Cookies
+ *
+ * @param cookie
+ * @constructor
+ */
+Wget2Clipboard.model.NetscapeCookies = (function(cookie) {
+  return new Wget2Clipboard.model.NetscapeCookie(cookie);
+});

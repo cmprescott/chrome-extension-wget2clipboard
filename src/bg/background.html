@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- namespace -->
   <script type="text/javascript" src="Wget2Clipboard.js"></script>
-  <script type="text/javascript" src="util.js"></script>
+  <!-- util -->
+  <script type="text/javascript" src="util/copy.js"></script>
+  <script type="text/javascript" src="util/escapeForConsole.js"></script>
+  <script type="text/javascript" src="util/escapeJs.js"></script>
+  <script type="text/javascript" src="util/parseDomain.js"></script>
+  <script type="text/javascript" src="util/redirectCommandsToFile.js"></script>
+  <!-- model -->
   <script type="text/javascript" src="model/Command.js"></script>
-  <script type="text/javascript" src="model/Command/Echo.js"></script>
-  <script type="text/javascript" src="model/Command/Delete.js"></script>
-  <script type="text/javascript" src="model/Command/Wget.js"></script>
+  <script type="text/javascript" src="model/Command_Echo.js"></script>
+  <script type="text/javascript" src="model/Command_Delete.js"></script>
+  <script type="text/javascript" src="model/Command_Wget.js"></script>
   <script type="text/javascript" src="model/File.js"></script>
   <script type="text/javascript" src="model/NetscapeCookie.js"></script>
+  <!-- variables -->
   <script type="text/javascript" src="var/cookiesFile.js"></script>
   <script type="text/javascript" src="var/domainList.js"></script>
   <script type="text/javascript" src="var/netscapeCookies.js"></script>
   <script type="text/javascript" src="var/settings.js"></script>
+  <!-- handlers -->
   <script type="text/javascript" src="handler/onClick.js"></script>
   <script type="text/javascript" src="handler/tabLoad.js"></script>
   <script type="text/javascript" src="handler/tabUpdated.js"></script>

@@ -4,28 +4,40 @@
   <!-- Setup -->
   <target name="setup">
 	<mkdir dir="lib"/>
+	<!-- Download/install Google closure-compiler -->
     <get src="http://dl.google.com/closure-compiler/compiler-latest.zip" dest="lib/compiler-latest.zip" skipexisting="true"/>
-	<unzip src="lib/compiler-latest.zip" dest="lib/closure-compiler"/>
+	<unzip src="lib/compiler-latest.zip" dest="lib/closure-compiler" overwrite="false"/>
+	<!-- Define jscomp Ant task -->
+	<taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="lib/closure-compiler/compiler.jar"/>
   </target>
+  
+  <!-- Clean -->
+  <target name="clean">
+    <delete dir="target"/>
+  </target>
+  
+  <!-- Build -->
+  <target name="build" depends="clean">
+	<mkdir dir="target"/>
+	<copy file="icons" todir="target/icons"/>
+	<ant target="compile"/>
+	<copy file="manifest.json" todir="target/manifest.json"/>
+  </target>  
   
   <!-- Compile -->
   <target name="compile" depends="setup">
-	<!-- Task defintions -->
-	<taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="lib/closure-compiler/compiler.jar"/>
-
-	<!-- actual tasks -->
-    <jscomp compilationLevel="advanced" warning="verbose"  debug="false" output="src/bg/bg-compiled.js">
+    <jscomp compilationLevel="advanced" warning="verbose"  debug="false" output="target/js/bg-compiled.js">
       <externs dir="${basedir}/src/extern">
         <!-- Closure compiler includes "chrome.js" -->
 		<file name="chrome_extensions.js"/>
       </externs>
       <sources dir="${basedir}/src/bg">
         <file name="Wget2Clipboard.js"/>
-        <file name="util.js"/>
+        <file name="copy.js"/>
 		<file name="model/Command.js"/>
-		<file name="model/Command/Echo.js"/>
-		<file name="model/Command/Delete.js"/>
-		<file name="model/Command/Wget.js"/>
+		<file name="model/Command/Command_Echo.js"/>
+		<file name="model/Command/Command_Delete.js"/>
+		<file name="model/Command/Command_Wget.js"/>
 		<file name="model/File.js"/>
 		<file name="model/NetscapeCookie.js"/>
 		<file name="var/cookiesFile.js"/>
@@ -38,5 +50,4 @@
       </sources>
     </jscomp>
   </target>
-  
 </project>

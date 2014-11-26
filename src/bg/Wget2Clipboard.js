@@ -19,9 +19,14 @@ var Wget2Clipboard = Wget2Clipboard ||
     File : {},
     NetscapeCookie : {}
   },
-  util: {},
+  util: {
+    copy: {},
+    escapeForConsole: {},
+    escapeJs: {},
+    parseDomain: {}
+  },
   var: {
-    cookiesFile : null,
+    cookiesFile : {},
     domainList : {},
     netscapeCookies : [],
     settings : {}
